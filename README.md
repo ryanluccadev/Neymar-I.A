@@ -1,5 +1,3 @@
-Sim. Para um repositório pessoal de aprendizado, fica melhor um README **mais direto**, focado no projeto, funcionalidades, tecnologias e objetivo. Removi instalação, clone, estrutura de arquivos, API Key e outras partes desnecessárias.
-
 # 🤖 Neymar IA
 
 > Assistente virtual inteligente desenvolvido em Python, com interação por voz e texto e integração com o Google Gemini.
