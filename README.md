@@ -1,5 +1,3 @@
-Claro — juntando tudo com a versão que você aprovou e sem mencionar o EA SPORTS FC 26:
-
 # 🤖 Neymar IA — v2.0
 
 > Assistente virtual inteligente desenvolvido em **Python**, com interação por voz e texto, Inteligência Artificial e automação do Windows.
