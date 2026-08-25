@@ -57,10 +57,12 @@ A Inteligência Artificial também foi utilizada como ferramenta de apoio durant
 * [ ] Personalidade própria mais avançada
 * [ ] Mais comandos de automação
 * [ ] Melhorias na interação com o sistema
+* [ ] Criar uma **interface gráfica bonita e moderna** para o sistema
 * [ ] Transformar o projeto em um **`.exe`**
 * [ ] Iniciar automaticamente junto com o Windows
 * [ ] Executar em **segundo plano**
 * [ ] Criar um sistema de inicialização e configuração mais simples
+
 
 ---
 
