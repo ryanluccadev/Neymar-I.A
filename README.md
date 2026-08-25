@@ -48,16 +48,13 @@ A Inteligência Artificial também foi utilizada como ferramenta de apoio durant
 * [x] Respostas mais naturais
 * [x] Integração com múltiplas IAs
 
-### 🔄 Em desenvolvimento
+### 💡 Futuras ideias
 
 * [ ] Histórico de conversas
 * [ ] Sistema de memória
 * [ ] Personalidade própria mais avançada
 * [ ] Mais comandos de automação
 * [ ] Melhorias na interação com o sistema
-
-### 💡 Futuras ideias
-
 * [ ] Transformar o projeto em um **`.exe`**
 * [ ] Iniciar automaticamente junto com o Windows
 * [ ] Executar em **segundo plano**
