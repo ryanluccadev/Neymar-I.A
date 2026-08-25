@@ -1,0 +1,23 @@
+"""
+Neymar IA — assistente de voz/texto para Windows.
+
+Pacote organizado por responsabilidade:
+
+- config.py    -> constantes, chaves de API, caminhos
+- clients.py   -> inicialização dos clientes de API (Gemini, Groq, Cohere, Tavily)
+- sistema.py   -> utilitários de SO (processos, URLs, janelas, apps)
+- audio.py     -> síntese de voz (TTS), reconhecimento de fala (STT), ativação
+- ia.py        -> integração com os provedores de IA e fallback em cascata
+- pesquisa.py  -> pesquisa na internet (Tavily) resumida pela IA
+- fc26.py      -> abrir/fechar o EA SPORTS FC 26
+- youtube.py   -> pesquisar e tocar música no YouTube
+- musica.py    -> controle de mídia do sistema e Deezer
+- comandos.py  -> tabela de comandos do sistema + despachante
+- modos.py     -> loops de modo voz/texto e máquina de estados principal
+"""
+
+from .modos import iniciar_assistente
+
+__all__ = [
+    "iniciar_assistente",
+]
