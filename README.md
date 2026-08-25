@@ -6,6 +6,8 @@
 
 O **Neymar IA** é um projeto pessoal desenvolvido em **Python** com o objetivo de praticar programação e explorar tecnologias de **Inteligência Artificial, APIs, reconhecimento de voz e automação**.
 
+O principal foco do projeto é **automatizar e facilitar o uso do meu computador**, permitindo executar tarefas, abrir programas, controlar o sistema e realizar diferentes ações através de comandos por voz ou texto.
+
 O projeto está **em andamento** e atualmente se encontra na **versão 2.0**, contando com diversos recursos novos em relação à primeira versão.
 
 A Inteligência Artificial também foi utilizada como ferramenta de apoio durante o desenvolvimento, auxiliando no aprendizado, resolução de problemas e implementação de novas funcionalidades.
@@ -41,12 +43,12 @@ A Inteligência Artificial também foi utilizada como ferramenta de apoio durant
 ### ✅ Já implementado
 
 * [x] Pesquisas na internet
+* [x] Integração com múltiplas IAs
 * [x] Controle de músicas
 * [x] Abertura de programas por voz
 * [x] Comandos para controlar o computador
 * [x] Melhorias no reconhecimento de voz
 * [x] Respostas mais naturais
-* [x] Integração com múltiplas IAs
 
 ### 💡 Futuras ideias
 
