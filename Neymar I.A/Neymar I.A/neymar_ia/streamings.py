@@ -397,7 +397,7 @@ def controlar_streamings(
                 )
 
     # ========================================================
-    # PESQUISA PELO PREFIXO
+    # PESQUISAS PELO PREFIXO
     # ========================================================
 
     prefixos = (
