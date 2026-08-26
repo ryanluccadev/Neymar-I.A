@@ -1,4 +1,4 @@
-# 🤖 Neymar IA — v2.0
+# 🤖 Neymar IA — v3.0
 
 > Assistente virtual inteligente desenvolvido em **Python**, com interação por voz e texto, Inteligência Artificial e automação do Windows.
 
@@ -8,7 +8,7 @@ O **Neymar IA** é um projeto pessoal desenvolvido em **Python** com o objetivo 
 
 O principal foco do projeto é **automatizar e facilitar o uso do meu computador**, permitindo executar tarefas, abrir programas, controlar o sistema e realizar diferentes ações através de comandos por voz ou texto.
 
-O projeto está **em andamento** e atualmente se encontra na **versão 2.0**, contando com diversos recursos novos em relação à primeira versão.
+O projeto está **em andamento** e atualmente se encontra na **versão 3.0**, contando com diversos recursos novos e melhorias em relação às versões anteriores.
 
 A Inteligência Artificial também foi utilizada como ferramenta de apoio durante o desenvolvimento, auxiliando no aprendizado, resolução de problemas e implementação de novas funcionalidades.
 
@@ -23,6 +23,8 @@ A Inteligência Artificial também foi utilizada como ferramenta de apoio durant
 * 🖥️ Automação do Windows
 * 📂 Controle de programas e janelas
 * 🔊 Controle do sistema
+* 🧠 Personalidade própria
+* ⚙️ Comandos de automação
 
 ---
 
@@ -49,14 +51,14 @@ A Inteligência Artificial também foi utilizada como ferramenta de apoio durant
 * [x] Comandos para controlar o computador
 * [x] Melhorias no reconhecimento de voz
 * [x] Respostas mais naturais
+* [x] Histórico de conversas
+* [x] Sistema de memória
+* [x] Personalidade própria mais avançada
+* [x] Mais comandos de automação
+* [x] Melhorias na interação com o sistema
 
 ### 💡 Futuras ideias
 
-* [ ] Histórico de conversas
-* [ ] Sistema de memória
-* [ ] Personalidade própria mais avançada
-* [ ] Mais comandos de automação
-* [ ] Melhorias na interação com o sistema
 * [ ] Criar uma **interface gráfica bonita e moderna** para o sistema
 * [ ] Transformar o projeto em um **`.exe`**
 * [ ] Iniciar automaticamente junto com o Windows
@@ -78,6 +80,6 @@ Estudante de **Tecnologia em Sistemas para Internet — IFSP**.
 
 ## ⭐ Status
 
-🚧 **Projeto em andamento — Versão 2.0**
+🚧 **Projeto em andamento — Versão 3.0**
 
 O Neymar IA continuará recebendo novas funcionalidades e melhorias conforme o projeto evolui.
