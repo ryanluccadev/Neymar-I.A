@@ -6,6 +6,7 @@ traduzido para português do Brasil pelo pipeline de IA (perguntar_neymar).
 from .clients import tavily_cliente
 from .audio import falar
 from .ia import perguntar_neymar
+from .historico import salvar_mensagem
 
 
 def _montar_contexto(resultado):
@@ -179,6 +180,9 @@ def pesquisar_internet(consulta, usar_voz=True):
         resposta = perguntar_neymar(
             prompt
         )
+
+        salvar_mensagem("usuario", consulta)
+        salvar_mensagem("assistente", resposta)
 
         falar(
             resposta,

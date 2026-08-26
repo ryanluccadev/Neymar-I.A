@@ -11,9 +11,12 @@ Pacote organizado por responsabilidade:
 - pesquisa.py  -> pesquisa na internet (Tavily) resumida pela IA
 - fc26.py      -> abrir/fechar o EA SPORTS FC 26
 - youtube.py   -> pesquisar e tocar música no YouTube
+- streamings.py -> automação de Netflix e Prime Video pelo Brave
 - musica.py    -> controle de mídia do sistema e Deezer
 - comandos.py  -> tabela de comandos do sistema + despachante
 - modos.py     -> loops de modo voz/texto e máquina de estados principal
+- historico.py  -> histórico persistente de conversas em SQLite
+- memoria.py   -> memória persistente controlada por comandos explícitos
 """
 
 from .modos import iniciar_assistente
