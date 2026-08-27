@@ -1,157 +1,136 @@
-# Neymar IA
+# 🤖 Neymar IA — V5.0
 
-Assistente virtual para Windows desenvolvido em Python, com interface gráfica, interação por voz e texto, integração com modelos de IA e automações do sistema.
+<p align="center">
+  <img src="https://img.shields.io/badge/Neymar%20IA-V5.0-00D26A?style=for-the-badge&logo=python&logoColor=white" alt="Neymar IA V5.0">
+  <img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Windows-Automation-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Windows">
+  <img src="https://img.shields.io/badge/Status-Em%20desenvolvimento-orange?style=for-the-badge" alt="Status">
+</p>
 
-## Principais funcionalidades
+<p align="center">
+  <strong>Assistente virtual inteligente desenvolvido em Python, com interação por voz e texto, Inteligência Artificial e automação do Windows.</strong>
+</p>
 
-- Interação por voz e texto.
-- Ativação por voz e processamento de comandos.
-- Interface gráfica com ícone e bandeja do sistema.
-- Integração com Gemini, Groq e Cohere.
-- Pesquisa na internet com Tavily.
-- Histórico de conversas em SQLite.
-- Memória persistente em SQLite.
-- Controle de músicas e Deezer.
-- Pesquisa e abertura de conteúdo no YouTube.
-- Automação do Windows, programas e janelas.
-- Comandos relacionados a mídia, streaming e FC 26.
-- Inicialização opcional com o Windows.
+---
 
-## Estrutura
+## 🧠 Sobre o projeto
 
-```text
-Neymar-I.A/
-├── Neymar_IA.py
-├── Neymar IA.spec
-├── requirements.txt
-├── README.md
-├── .gitignore
-├── .env.example
-└── neymar_ia/
-    ├── __init__.py
-    ├── audio.py
-    ├── clients.py
-    ├── comandos.py
-    ├── config.py
-    ├── fc26.py
-    ├── historico.py
-    ├── ia.py
-    ├── inicializacao.py
-    ├── interface.py
-    ├── memoria.py
-    ├── midia.py
-    ├── modos.py
-    ├── musica.py
-    ├── pesquisa.py
-    ├── sistema.py
-    ├── streamings.py
-    ├── youtube.py
-    └── assets/
-        ├── neymar_ia.ico
-        └── neymar_ia.png
-```
+O **Neymar IA** é um projeto pessoal desenvolvido em **Python** com o objetivo de praticar programação e explorar tecnologias de **Inteligência Artificial, APIs, reconhecimento de voz e automação**.
 
-O arquivo principal é **`Neymar_IA.py`**.
+O principal foco do projeto é automatizar e facilitar o uso do meu computador, permitindo executar tarefas, abrir programas, controlar o sistema e realizar diferentes ações através de comandos por **voz ou texto**.
 
-Existe somente um arquivo de configuração do PyInstaller: **`Neymar IA.spec`**.
+O projeto está em andamento e atualmente se encontra na **versão 5.0**, contando com diversos recursos novos e melhorias em relação às versões anteriores.
 
-## Instalação
+A Inteligência Artificial também foi utilizada como ferramenta de apoio durante o desenvolvimento, auxiliando no aprendizado, resolução de problemas e implementação de novas funcionalidades.
 
-No Windows, abra o PowerShell na pasta do projeto:
+---
 
-```powershell
-cd "CAMINHO\DO\PROJETO"
+## ✨ Funcionalidades
 
-python -m venv venv
+| Recurso | Descrição                           |
+| :-----: | ----------------------------------- |
+|   🎙️   | **Voz e texto**                     |
+|    🤖   | **Inteligência Artificial**         |
+|    🌐   | **Pesquisas na internet**           |
+|    🎵   | **Controle de músicas**             |
+|   🖥️   | **Automação do Windows**            |
+|    📂   | **Controle de programas e janelas** |
+|    🔊   | **Controle do sistema**             |
+|    🧠   | **Personalidade própria**           |
+|    ⚙️   | **Comandos de automação**           |
 
-.\venv\Scripts\Activate.ps1
+---
 
-python -m pip install --upgrade pip setuptools wheel
+## 🛠️ Tecnologias
 
-pip install -r requirements.txt
+<p align="center">
 
-pip install pyinstaller
-```
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white">
+<img src="https://img.shields.io/badge/Groq-F55036?style=for-the-badge&logo=groq&logoColor=white">
+<img src="https://img.shields.io/badge/Cohere-39594D?style=for-the-badge&logo=cohere&logoColor=white">
 
-Se o PowerShell bloquear a ativação, execute o comando de acordo com a política de execução configurada no seu Windows.
+<br>
 
-## Configuração das APIs
+<img src="https://img.shields.io/badge/Tavily-000000?style=for-the-badge">
+<img src="https://img.shields.io/badge/SpeechRecognition-000000?style=for-the-badge">
+<img src="https://img.shields.io/badge/SoundDevice-000000?style=for-the-badge">
+<img src="https://img.shields.io/badge/Edge%20TTS-0078D4?style=for-the-badge&logo=microsoftedge&logoColor=white">
 
-Copie `.env.example` para `.env` e preencha apenas as chaves que você possui:
+<br>
 
-```text
-GEMINI_API_KEY=
-GROQ_API_KEY=
-COHERE_API_KEY=
-TAVILY_API_KEY=
-```
+<img src="https://img.shields.io/badge/PyAutoGUI-3776AB?style=for-the-badge&logo=python&logoColor=white">
+<img src="https://img.shields.io/badge/Asyncio-3776AB?style=for-the-badge&logo=python&logoColor=white">
 
-O `.env` não deve ser enviado ao Git ou compartilhado publicamente.
+</p>
 
-As chaves são carregadas automaticamente na inicialização por `python-dotenv`.
+### 🐍 Linguagens
 
-Também é possível configurar opcionalmente:
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white">
+</p>
 
-- `NEYMAR_MICROFONE`: parte do nome do microfone preferido.
-- `NEYMAR_CAMINHO_FC26`: caminho do executável do FC 26.
+---
 
-## Executar pelo Python
+## 🚀 Próximas melhorias
 
-Com a virtualenv ativada:
+### ✅ Já implementado
 
-```powershell
-python Neymar_IA.py
-```
+* ✅ Pesquisas na internet
+* ✅ Integração com múltiplas IAs
+* ✅ Controle de músicas
+* ✅ Abertura de programas por voz
+* ✅ Comandos para controlar o computador
+* ✅ Melhorias no reconhecimento de voz
+* ✅ Respostas mais naturais
+* ✅ Histórico de conversas
+* ✅ Sistema de memória
+* ✅ Personalidade própria mais avançada
+* ✅ Mais comandos de automação
+* ✅ Melhorias na interação com o sistema
+* ✅ Transformar o projeto em um `.exe`
+* ✅ Iniciar automaticamente junto com o Windows
+* ✅ Executar em segundo plano
+* ✅ Criar um sistema de inicialização e configuração mais simples
+* ✅ Criar uma interface gráfica bonita e moderna para o sistema
+* ✅ Iniciar automaticamente em segundo plano
 
-## Criar o executável
+---
 
-Depois de instalar o PyInstaller:
+## 👨‍💻 Desenvolvedor
 
-```powershell
-python -m PyInstaller --clean "Neymar IA.spec"
-```
+<p align="center">
 
-O executável será gerado em:
+### Ryan Lucca
 
-```text
-dist\Neymar IA.exe
-```
+**Estudante de Tecnologia em Sistemas para Internet — IFSP.**
 
-A configuração usa:
+<br>
 
-- `Neymar_IA.py` como ponto de entrada.
-- Todos os submódulos de `neymar_ia` como hidden imports.
-- `neymar_ia/assets` no executável.
-- `neymar_ia/assets/neymar_ia.ico` como ícone.
-- `console=False`, evitando a abertura de um terminal junto da interface.
+`Python` • `C` • `Java` • `JavaScript` • `HTML` • `CSS`
 
-## Recompilar após alterar o código
+</p>
 
-Não é necessário instalar todas as dependências novamente. Com a virtualenv ativada, execute:
+---
 
-```powershell
-.\venv\Scripts\Activate.ps1
+## ⭐ Status
 
-python -m PyInstaller --clean "Neymar IA.spec"
-```
+<p align="center">
 
-Isso gera novamente:
+<img src="https://img.shields.io/badge/🚧%20Projeto%20em%20andamento-V5.0-orange?style=for-the-badge">
 
-```text
-dist\Neymar IA.exe
-```
+</p>
 
-com as alterações atuais.
+O **Neymar IA** continuará recebendo novas funcionalidades e melhorias conforme o projeto evolui.
 
-## Dados persistentes
+---
 
-Os bancos de memória e histórico são gravados em uma pasta de dados gravável do usuário, fora do executável. No Windows, normalmente ficam dentro de `LOCALAPPDATA\Neymar IA\data` (ou `APPDATA` quando necessário).
-
-Assim, memória e histórico não dependem da pasta temporária usada pelo PyInstaller e continuam disponíveis entre execuções do `.exe`.
-
-## Observações
-
-- `build/`, `dist/`, virtualenvs, caches e bancos locais são ignorados pelo `.gitignore`.
-- Não há `main.py` no projeto.
-- Não há um segundo arquivo `.spec`.
-- O PyInstaller é uma ferramenta de build e, por isso, é instalado separadamente de `requirements.txt`.
+<p align="center">
+  <strong>🤖 Neymar IA</strong><br>
+  <sub>Um projeto pessoal em constante evolução.</sub>
+</p>
