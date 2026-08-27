@@ -2,7 +2,6 @@
 
 import sys
 
-
 if __name__ == "__main__":
     if "--console" in sys.argv:
         from neymar_ia import iniciar_assistente

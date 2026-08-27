@@ -11,7 +11,9 @@ Controla:
 """
 
 import os
+import sys
 import sqlite3
+import threading
 from datetime import datetime
 
 from .sistema import bate
@@ -33,6 +35,109 @@ from .memoria import (
     processar_comando as processar_memoria,
     inicializar as inicializar_memoria
 )
+
+
+# ============================================================
+# CONSOLE DISPONÍVEL?
+# ============================================================
+
+def _console_disponivel():
+    """
+    Verifica se existe um console interativo (stdin) de verdade.
+
+    Quando o Neymar roda dentro da interface gráfica (ou como .exe
+    gerado com PyInstaller em modo janela), não existe um console
+    de verdade por trás: sys.stdin pode ser None ou não ser um
+    terminal. Nesse caso, chamar input() explode com
+    'RuntimeError: lost sys.stdin'. Esta função existe para evitar
+    isso: qualquer trecho que dependa de input() deve checar aqui
+    antes.
+    """
+
+    try:
+
+        return (
+            sys.stdin is not None
+            and sys.stdin.isatty()
+        )
+
+    except Exception:
+
+        return False
+
+
+# ============================================================
+# CONTROLE DO NÚCLEO (PONTE COM A INTERFACE GRÁFICA)
+# ============================================================
+
+class ControleNucleo:
+    """
+    Ponte entre a interface gráfica e a máquina de estados.
+
+    Não substitui modo_voz()/modo_texto() (que continuam existindo
+    e funcionando normalmente pelo terminal). Ela só existe para o
+    caso de rodar dentro da interface, onde não há input() de
+    console disponível: em vez de travar em input(), o modo texto
+    dorme aqui até a própria interface avisar "voltar pra voz" ou
+    "desligar" (o que ela já faz sempre que você digita algo na
+    caixa de texto).
+    """
+
+    def __init__(self):
+        self.modo = "voz"
+        self.rodando = True
+        self._evento = threading.Event()
+
+    def pedir_modo_voz(self):
+        self.modo = "voz"
+        self._evento.set()
+
+    def pedir_modo_texto(self):
+        self.modo = "texto"
+        self._evento.set()
+
+    def pedir_desligar(self):
+        self.rodando = False
+        self._evento.set()
+
+    def _aguardar_mudanca(self):
+        self._evento.wait()
+        self._evento.clear()
+
+
+def _modo_texto_gui(controle, status_callback=None):
+    """
+    Equivalente ao modo_texto(), só que para quando o Neymar roda
+    na interface gráfica. As mensagens continuam sendo digitadas
+    normalmente na caixa de texto da interface (que já chama
+    processar_comando() por conta própria) — aqui a gente só fica
+    esperando, sem consumir CPU e sem tocar em input(), até a
+    interface avisar que é pra voltar ao modo voz ou desligar.
+    """
+
+    if status_callback:
+        status_callback("modo_texto")
+
+    falar(
+        "Modo texto ativado. Pode digitar na caixa de texto da "
+        "interface. Para voltar a falar, digite 'mudar para voz'.",
+        False
+    )
+
+    controle.modo = "texto"
+
+    while True:
+
+        controle._aguardar_mudanca()
+
+        if not controle.rodando:
+            return "desligar"
+
+        if controle.modo == "voz":
+            return "voz"
+
+        # Mudança sinalizada mas ainda em modo texto: falso alarme,
+        # continua esperando.
 
 
 # ============================================================
@@ -121,6 +226,42 @@ def _processar_recursos(comando, usar_voz):
 
             resposta = (
                 "Ainda não existe nenhuma conversa salva."
+            )
+
+            falar(
+                resposta,
+                usar_voz
+            )
+
+            return True
+
+        if not _console_disponivel():
+
+            # Sem console interativo (ex.: rodando pela interface
+            # gráfica). Mostra um resumo direto, sem menu que
+            # dependeria de input().
+
+            print(
+                "\nHistórico de conversas:"
+            )
+
+            for numero, sessao in enumerate(
+                sessoes,
+                start=1
+            ):
+
+                resumo = _obter_resumo_conversa(
+                    sessao["id"]
+                )
+
+                print(
+                    f"{numero}. {resumo}"
+                )
+
+            resposta = (
+                "Aqui está um resumo do seu histórico. Para ver uma "
+                "conversa específica, use a caixa de texto da "
+                "interface."
             )
 
             falar(
@@ -525,7 +666,12 @@ def modo_voz(status_callback=None):
 # ============================================================
 
 def modo_texto():
-    """Loop principal do modo texto."""
+    """
+    Loop principal do modo texto pelo TERMINAL (usa input() de
+    verdade). Só é chamado quando existe um console interativo de
+    verdade (ex.: `python main.py --console`). Quando roda pela
+    interface gráfica, quem assume é a _modo_texto_gui().
+    """
 
     while True:
 
@@ -642,8 +788,16 @@ def processar_comando(comando, usar_voz=False):
 # INICIAR ASSISTENTE
 # ============================================================
 
-def iniciar_assistente(status_callback=None):
-    """Máquina de estados principal. A interface acompanha o mesmo núcleo de voz."""
+def iniciar_assistente(status_callback=None, controle=None):
+    """
+    Máquina de estados principal. A interface acompanha o mesmo
+    núcleo de voz.
+
+    `controle`: instância de ControleNucleo, passada pela interface
+    gráfica. Quando None (uso normal pelo terminal), o modo texto
+    usa input() como sempre. Quando fornecida, o modo texto usa a
+    ponte _modo_texto_gui() em vez de input().
+    """
 
     _inicializar_dados()
 
@@ -709,9 +863,21 @@ def iniciar_assistente(status_callback=None):
 
         elif modo == "texto":
 
-            resultado = modo_texto()
+            if controle is not None:
+
+                resultado = _modo_texto_gui(
+                    controle,
+                    status_callback
+                )
+
+            else:
+
+                resultado = modo_texto()
 
             if resultado == "voz":
+
+                if controle is not None:
+                    controle.modo = "voz"
 
                 modo = "voz"
 

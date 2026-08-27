@@ -32,9 +32,12 @@ except ImportError as erro:
 
 from . import inicializacao
 
+from .sistema import bate
+
 from .modos import (
     iniciar_assistente,
-    processar_comando
+    processar_comando,
+    ControleNucleo
 )
 
 
@@ -138,6 +141,9 @@ class NeymarApp(ctk.CTk):
         # ----------------------------------------------------
 
         self.assistente_iniciado = False
+
+        # Ponte com a máquina de estados (modo voz <-> modo texto)
+        self.controle = ControleNucleo()
 
         self._stdout_original = sys.stdout
         self._stderr_original = sys.stderr
@@ -497,14 +503,21 @@ class NeymarApp(ctk.CTk):
         try:
 
             iniciar_assistente(
-                status_callback=self._status_do_nucleo
+                status_callback=self._status_do_nucleo,
+                controle=self.controle
             )
 
         except Exception as erro:
 
+            # Importante: usar "erro=erro" como valor padrão do
+            # parâmetro da lambda. O Python apaga a variável 'erro'
+            # assim que o bloco except termina, e o self.after(0, ...)
+            # só executa a lambda depois disso — sem o valor padrão,
+            # ela tentaria ler uma variável que não existe mais e
+            # estourava NameError ("cannot access free variable").
             self.after(
                 0,
-                lambda: self._erro_nucleo(erro)
+                lambda erro=erro: self._erro_nucleo(erro)
             )
 
     # ========================================================
@@ -546,6 +559,12 @@ class NeymarApp(ctk.CTk):
                 "●  Neymar desligado",
                 "#f87171",
                 "\n🔴 Neymar desligado.\n"
+            ),
+
+            "modo_texto": (
+                '●  Modo texto — digite abaixo',
+                "#4ade80",
+                "\n⌨️  Modo texto ativado. Digite na caixa abaixo.\n"
             ),
         }
 
@@ -632,6 +651,68 @@ class NeymarApp(ctk.CTk):
 
         try:
 
+            comando = texto.lower().strip()
+
+            # ------------------------------------------------
+            # Comandos de controle (mesmos gatilhos de
+            # modo_texto()/modo_voz(), só que digitados aqui em
+            # vez de ditos por voz).
+            # ------------------------------------------------
+
+            if bate(
+                comando,
+                "desligar neymar",
+                "desliga neymar"
+            ):
+
+                self.controle.pedir_desligar()
+
+                self.after(
+                    0,
+                    lambda: self._log(
+                        "Neymar: Desligando os sistemas. Até logo, "
+                        "senhor.\n"
+                    )
+                )
+
+                return
+
+            if bate(
+                comando,
+                "mudar para voz",
+                "modo voz",
+                "trocar para voz"
+            ):
+
+                self.controle.pedir_modo_voz()
+
+                self.after(
+                    0,
+                    lambda: self._log(
+                        "Neymar: Mudando para o modo voz.\n"
+                    )
+                )
+
+                return
+
+            if bate(
+                comando,
+                "mudar para texto",
+                "modo texto",
+                "trocar para texto"
+            ):
+
+                self.controle.pedir_modo_texto()
+
+                self.after(
+                    0,
+                    lambda: self._log(
+                        "Neymar: Já estamos no modo texto.\n"
+                    )
+                )
+
+                return
+
             resposta = processar_comando(
                 texto,
                 usar_voz=False
@@ -648,9 +729,12 @@ class NeymarApp(ctk.CTk):
 
         except Exception as erro:
 
+            # Mesmo motivo do outro except: precisa capturar 'erro'
+            # como valor padrão, senão dá o mesmo NameError quando
+            # a lambda roda depois do bloco except já ter terminado.
             self.after(
                 0,
-                lambda: self._log(
+                lambda erro=erro: self._log(
                     f"Erro: {erro}\n"
                 )
             )
