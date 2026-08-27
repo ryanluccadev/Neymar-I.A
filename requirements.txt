@@ -1,0 +1,16 @@
+customtkinter
+pystray
+Pillow
+pywin32
+numpy
+pyautogui
+SpeechRecognition
+sounddevice
+edge-tts
+pygame-ce
+google-genai
+groq
+cohere
+tavily-python
+requests
+python-dotenv
