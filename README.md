@@ -1,4 +1,4 @@
-# 🤖 Neymar IA — v4.0
+# 🤖 Neymar IA — v4.1
 
 > Assistente virtual inteligente desenvolvido em **Python**, com interação por voz e texto, Inteligência Artificial e automação do Windows.
 
@@ -8,7 +8,7 @@ O **Neymar IA** é um projeto pessoal desenvolvido em **Python** com o objetivo 
 
 O principal foco do projeto é **automatizar e facilitar o uso do meu computador**, permitindo executar tarefas, abrir programas, controlar o sistema e realizar diferentes ações através de comandos por voz ou texto.
 
-O projeto está **em andamento** e atualmente se encontra na **versão 4.0**, contando com diversos recursos novos e melhorias em relação às versões anteriores.
+O projeto está **em andamento** e atualmente se encontra na **versão 4.1**, contando com diversos recursos novos e melhorias em relação às versões anteriores.
 
 A Inteligência Artificial também foi utilizada como ferramenta de apoio durante o desenvolvimento, auxiliando no aprendizado, resolução de problemas e implementação de novas funcionalidades.
 
@@ -79,6 +79,6 @@ Estudante de **Tecnologia em Sistemas para Internet — IFSP**.
 
 ## ⭐ Status
 
-🚧 **Projeto em andamento — Versão 4.0**
+🚧 **Projeto em andamento — Versão 4.1**
 
 O Neymar IA continuará recebendo novas funcionalidades e melhorias conforme o projeto evolui.
