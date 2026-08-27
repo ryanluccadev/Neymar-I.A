@@ -1,0 +1,25 @@
+===========================
+- TUTORIAL DE INSTALAÇÃO -
+===========================
+
+COMANDOS PARA INSTALAR:
+
+===============
+--- PyCharm ---
+===============
+
+cd "CAMINHO DO ARQUIVO"
+pip install -r requirements.txt
+
+==================
+--- Powershell ---
+==================
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+python -m pip install --upgrade pip setuptools wheel
+
+pip install -r requirements.txt
+pip install pyinstaller
+
+python -m PyInstaller --clean "Neymar IA.spec"
