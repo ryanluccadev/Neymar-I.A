@@ -1,0 +1,15 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.spec.bak
+.env
+data/
+*.db
+*.sqlite
+.pytest_cache/
+.mypy_cache/
+.coverage
